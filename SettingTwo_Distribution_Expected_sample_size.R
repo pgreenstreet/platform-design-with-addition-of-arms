@@ -17,7 +17,7 @@ library("gtools")
 #sd is standard derivation
 
 
-gausspoints<-function(N,a,b) 
+gausspoints=function(N,a,b) 
 {
   gq = gauss.quad(N)
   w = gq$weights*(b-a)/2
