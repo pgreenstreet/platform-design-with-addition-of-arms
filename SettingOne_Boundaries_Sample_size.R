@@ -132,7 +132,7 @@ editedbound=function(L,U,sh,S,r,r0,t,lsh)
     {
       partl=L[h,j]*sqrt(1+(r[h,j]/(r0[(sh[h]+j)]-r0sh))) #bit that using lower boundary
       partu=U[h,j]*sqrt(1+(r[h,j]/(r0[(sh[h]+j)]-r0sh))) #bit that using upper boundary
-      partt1=sqrt(r[h,j])/(r0[(sh[h]+j)]-r0sh) # the t part at the begining
+      partt1=sqrt(r[h,j])/(r0[(sh[h]+j)]-r0sh) 
       partt2=0 #the t part in the sum
       for(i in 1:j)
       {
@@ -224,7 +224,7 @@ editedboundpower=function(L,U,sh,S,r,r0,n,n0,delta0,f,delta1,sd,t,lsh)
     {
       partl=L[h,j]*sqrt(1+(r[h,j]/(r0[(sh[h]+j)]-r0sh))) #bit that using lower boundary
       partu=U[h,j]*sqrt(1+(r[h,j]/(r0[(sh[h]+j)]-r0sh))) #bit that using upper boundary
-      partt1=sqrt(r[h,j])/(r0[(sh[h]+j)]-r0sh) # the t part at the begining
+      partt1=sqrt(r[h,j])/(r0[(sh[h]+j)]-r0sh)
       partt2=0 #the t part in the sum
       for(i in 1:j)
       {
@@ -285,7 +285,7 @@ corralationmatix=function(r) #given h
   return(AllCormat)  
 }
 
-corralationmatixf=function(r,f,J) #correlation matirx for f given j
+corralationmatixf=function(r,f,J) 
 {
   Cormat=diag(1,nrow = (J-1))
   for(j1 in 1:(J-1)) #j
@@ -301,7 +301,7 @@ corralationmatixf=function(r,f,J) #correlation matirx for f given j
 }
 
 
-treatmentfatJ=function(r,f,J,eb,v,fcm,lsh) #find probability of treatment f gets to stage J  ignoring the rest
+treatmentfatJ=function(r,f,J,eb,v,fcm,lsh) #find probability of treatment f gets to stage J 
 {
   startpart=1
   if(J>1)
@@ -347,7 +347,7 @@ Betaforgivent=function(L,U,sh,S,r,r0,n,n0,delta0,delta1,f,sd,t,lsh,v,J,acm,fcm)
       sumpart=rep(NA,mYsf) #sum part
       if(mYsf==1)
       {
-        odotUB=sqrt(n[h,ip]/n[f,J])*v+(sqrt(n[h,ip])*(delta1-delta0))/sd   #other part of dot upper bound 
+        odotUB=sqrt(n[h,ip]/n[f,J])*v+(sqrt(n[h,ip])*(delta1-delta0))/sd   
         dotUB=max(ueb[h,1],odotUB) 
         sumpart[1]=pmvnorm(lower=-Inf, upper = dotUB,mean = 0, sigma = 1)[1]
       }
@@ -358,7 +358,7 @@ Betaforgivent=function(L,U,sh,S,r,r0,n,n0,delta0,delta1,f,sd,t,lsh,v,J,acm,fcm)
         {
           if(ip==j)
           {
-            odotUB=sqrt(n[h,ip]/n[f,J])*v+(sqrt(n[h,ip])*(delta1-delta0))/sd   #other part of dot upper bound 
+            odotUB=sqrt(n[h,ip]/n[f,J])*v+(sqrt(n[h,ip])*(delta1-delta0))/sd   
             dotUB=max(ueb[h,j],odotUB)  
             sumpart[j]=pmvnorm(lower=c(leb[h,1:(j-1)],-Inf) , upper = c(ueb[h,1:(j-1)],dotUB)  ,mean = rep(0,j), corr = cm[1:j,1:j])[1]
           }
